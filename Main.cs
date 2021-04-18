@@ -9,6 +9,7 @@ using TMPro;
 
 namespace OwORhythmRewritten
 {
+    // Modified from Pink's original OwORhythm which is modified from lolpants.
     [BepInPlugin("OwORhythmRewritten", "OwORhythmRewritten", "1.0.0")]
     public class Main : BasePlugin
     {
