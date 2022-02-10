@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using BepInEx;
-using BepInEx.IL2CPP;
 using System.Threading;
 using System.Threading.Tasks;
 using HarmonyLib;
@@ -11,16 +10,16 @@ namespace OwORhythmRewritten
 {
     // Modified from Pink's original OwORhythm which is modified from lolpants.
     [BepInPlugin("OwORhythmRewritten", "OwORhythmRewritten", "1.0.0")]
-    public class Main : BasePlugin
+    public class Main : BaseUnityPlugin
     {
-        public override void Load()
+        void Awake()
         {
             Harmony.CreateAndPatchAll(typeof(Run));
         }
 
         class Run
         {
-            [HarmonyPatch(typeof(TextMeshProUGUI), nameof(TextMeshProUGUI.Awake)), HarmonyPostfix]
+            [HarmonyPatch(typeof(TextMeshProUGUI), "Awake"), HarmonyPostfix]
             public static void AwakePostfix(TextMeshProUGUI __instance)
             {
                 bool flag = __instance.text == null;
